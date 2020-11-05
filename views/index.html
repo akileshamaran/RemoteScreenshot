@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Remote ScreenShot Imager</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.0/css/bootstrapValidator.min.css"
+        />
+        <link rel="stylesheet" href="./css/style.css" />
+        <!-- jQuery and JS bundle w/ Popper.js -->
+        <script
+            src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+            crossorigin="anonymous"
+        ></script>
+    </head>
+    <body>
+        <div class="container">
+            <!-- <h1>Screenshot saver</h1> -->
+            <fieldset>
+                <form class="well form-horizontal" action="/submit" method="post" id="_form">
+                    <div class="input-group mb-3">
+                        <div class="form-group text-center">
+                            <div class="inputGroupContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-link"></i></span>
+                                    <input
+                                        name="url"
+                                        placeholder="Enter the target url"
+                                        class="form-control"
+                                        type="text"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="selectContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                                    <select class="form-control" id="resolution" name="resolution">
+                                        <option>1024x768</option>
+                                        <option>1280x800</option>
+                                        <option>1024x600</option>
+                                        <option>480x320</option>
+                                        <option>800x480</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="selectContainer">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                                    <select class="form-control" id="format" name="format">
+                                        <option>png</option>
+                                        <option>jpg</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group-append">
+                            <input
+                                class="btn btn-outline-secondary"
+                                type="submit"
+                                id="target"
+                                value="Go"
+                            />
+                            <img
+                                class="input-group-append"
+                                style="display: none"
+                                id="loader"
+                                src="./loader/loader.gif"
+                                width="20"
+                                height="20"
+                            />
+                            <a style="display: none" id="finalImage" class="btn btn-secondary" href="http://" download
+                                >Download</a
+                            >
+                        </div>
+                        <div class="input-group-append"></div>
+                    </div>
+                </form>
+            </fieldset>
+        </div>
+    </body>
+    <script>
+        let finalsrc = '<%= targetURL %>';
+        if (finalsrc.length == 23) {
+            console.log('Image is being loaded');
+            document.getElementById('loader').style.display = 'block';
+            document.getElementById('target').style.display = 'none';
+            setTimeout(() => {
+                document.getElementById('finalImage').href = './images/' + finalsrc;
+                document.getElementById('loader').style.display = 'none';
+                document.getElementById('finalImage').style.display = 'block';
+            }, 7000);
+        }
+        const showImage = () => {};
+    </script>
+</html>

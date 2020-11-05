@@ -1,0 +1,20 @@
+body{
+   background-image: url("./../bg/bg.jpg"); 
+}
+.container{
+    margin-top: 18%;
+}
+.well{
+    max-width: 300px;
+    border: none;
+    background-color: #fd496e;  
+}
+fieldset{
+    padding-left: 395px;
+}
+.input-group-addon{
+    max-width: 290px;
+}
+.form-control{
+min-width: 255px;
+}
